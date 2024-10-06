@@ -1,6 +1,5 @@
 const INVALID_PTR: *mut i32 = core::mem::align_of::<i32>() as _;
 
-
 struct Resource {
     data: i32,
 }

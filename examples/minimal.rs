@@ -2,7 +2,6 @@
 
 const INVALID_PTR: *mut i32 = core::mem::align_of::<i32>() as _;
 
-
 fn with_propagation() -> Result<(), microseh::Exception> {
     // ...
 
