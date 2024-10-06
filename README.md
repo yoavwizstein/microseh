@@ -68,3 +68,11 @@ on Windows when using Microsoft Visual C++ (MSVC).
 
 MicroSEH is compatible with and has been tested on Windows platforms with the following
 architectures: **x86**, **x86_64** and **aarch64**.
+
+When building for other unsupported platforms, the library will disable exception
+handling and panic when `try_seh` is called.
+
+## Cross-Compiling
+
+Cross-compiling for Windows is possible with full support for SEH using the
+[cargo-xwin](https://github.com/rust-cross/cargo-xwin) project.
