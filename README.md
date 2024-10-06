@@ -39,12 +39,12 @@ microseh = "1.1"
 **Minimal Example:** Dereference an invalid pointer without crashing the program, and return the handled exception.
 
 ```rust
-fn guarded() -> Result<(), Box<dyn Error>> {
+fn guarded() -> Result<(), microseh::Exception> {
     microseh::try_seh(|| unsafe {
         // Read from an unallocated memory region. (we create an aligned not-null
         // pointer to skip the checks in read_volatile that would raise a panic)
         core::ptr::read_volatile(core::mem::align_of::<i32>() as *const i32);
-    })?;
+    })
 }
 ```
 
@@ -76,3 +76,8 @@ handling and panic when `try_seh` is called.
 
 Cross-compiling for Windows is possible with full support for SEH using the
 [cargo-xwin](https://github.com/rust-cross/cargo-xwin) project.
+
+## License
+
+This work is released under the MIT license. A copy of the license is provided in the
+[LICENSE](./LICENSE) file.
