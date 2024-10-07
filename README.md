@@ -72,6 +72,11 @@ architectures: **x86**, **x86_64** and **aarch64**.
 When building for other unsupported platforms, the library will disable exception
 handling and panic when `try_seh` is called.
 
+## Usage on Kernel Drivers
+
+This library can compile to `no_std` and supports running in Windows Kernel Drivers using
+Microsoft's [windows-drivers-rs](https://github.com/microsoft/windows-drivers-rs) project.
+
 ## Cross-Compiling
 
 Cross-compiling for Windows is possible with full support for SEH using the
