@@ -12,7 +12,6 @@ pub use exception::Exception;
 pub use registers::Registers;
 
 const MS_SUCCEEDED: u32 = 0x0;
-const MS_CATCHED: u32 = 0x1;
 
 /// Type alias for a function that converts a pointer to a function and executes it.
 type ProcExecutor = unsafe extern "system" fn(*mut c_void);
@@ -77,8 +76,7 @@ where
 
     match unsafe { handler_stub(proc_executor::<F>, proc, &mut exception) } {
         MS_SUCCEEDED => Ok(()),
-        MS_CATCHED => Err(exception),
-        _ => unreachable!(),
+        _ => Err(exception),
     }
 }
 
