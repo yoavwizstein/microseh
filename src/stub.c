@@ -123,7 +123,7 @@ typedef struct _EXCEPTION
 #endif
 } EXCEPTION, *PEXCEPTION;
 
-uint32_t HandlerStub(_In_ PPROC_EXECUTOR ProcExecutor, _In_ PVOID Proc, _Inout_ PEXCEPTION Exception)
+uint32_t __microseh_HandlerStub(_In_ PPROC_EXECUTOR ProcExecutor, _In_ PVOID Proc, _Inout_ PEXCEPTION Exception)
 {
     uint32_t Result = MS_SUCCEEDED;
     LPEXCEPTION_POINTERS Pointers = NULL;
