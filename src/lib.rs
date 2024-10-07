@@ -48,7 +48,7 @@ extern "C" {
     ///
     /// * `0x0` - If the procedure executed without throwing any exceptions.
     /// * `0x1` - If an exception occurred during the execution of the procedure.
-    #[link_name = "HandlerStub"]
+    #[link_name = "__microseh_HandlerStub"]
     fn handler_stub(
         proc_executor: ProcExecutor,
         proc: *mut c_void,

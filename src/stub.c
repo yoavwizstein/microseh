@@ -38,7 +38,7 @@ typedef struct _REGISTERS
     DWORD_PTR List[NUM_REGISTERS];
 } REGISTERS, *PREGISTERS;
 
-REGISTERS MakeRegisters(_In_ PCONTEXT Context)
+__forceinline REGISTERS __microseh_MakeRegisters(_In_ PCONTEXT Context)
 {
     REGISTERS Registers;
 
@@ -142,7 +142,7 @@ uint32_t HandlerStub(_In_ PPROC_EXECUTOR ProcExecutor, _In_ PVOID Proc, _Inout_ 
             Exception->Code = Code;
             Exception->Address = Pointers->ExceptionRecord->ExceptionAddress;
 #if HAS_REGISTERS
-            Exception->Registers = MakeRegisters(Pointers->ContextRecord);
+            Exception->Registers = __microseh_MakeRegisters(Pointers->ContextRecord);
 #endif
         }
     }
