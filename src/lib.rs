@@ -5,11 +5,9 @@ use core::{ffi::c_void, mem::MaybeUninit};
 
 mod code;
 mod exception;
-mod registers;
 
 pub use code::ExceptionCode;
 pub use exception::Exception;
-pub use registers::Registers;
 
 const MS_SUCCEEDED: u32 = 0x0;
 
