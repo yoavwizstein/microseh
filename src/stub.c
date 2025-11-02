@@ -1,7 +1,7 @@
 #include <stdint.h>
 
 #define WIN32_LEAN_AND_MEAN
-#include <wdm.h>
+#include <winnt.h>
 
 #define MS_SUCCEEDED 0x0
 #define MS_CATCHED 0x1
