@@ -1,8 +1,5 @@
 #include <stdint.h>
 
-#define WIN32_LEAN_AND_MEAN
-#include <excpt.h>
-
 #define MS_SUCCEEDED 0x0
 #define MS_CATCHED 0x1
 
@@ -21,6 +18,9 @@
 #define TG_ARCH TG_ARCH_UNKNOWN
 #endif
 
+#define EXCEPTION_EXECUTE_HANDLER      1
+#define GetExceptionCode            _exception_code
+unsigned long __cdecl _exception_code(void);
 
 typedef void(__stdcall *PPROC_EXECUTOR)(void* Proc);
 
