@@ -20,9 +20,17 @@
 
 #define EXCEPTION_EXECUTE_HANDLER      1
 #define GetExceptionCode            _exception_code
-unsigned long __cdecl _exception_code(void);
+#if defined(_MSC_VER)
+    #define TG_CDECL __cdecl
+    #define TG_STDCALL __stdcall
+#else
+    #define TG_CDECL __attribute__((cdecl))
+    #define TG_STDCALL __attribute__((stdcall))
+#endif
 
-typedef void(__stdcall *PPROC_EXECUTOR)(void* Proc);
+unsigned long TG_CDECL _exception_code(void);
+
+typedef void (TG_STDCALL *PPROC_EXECUTOR)(void* Proc);
 
 typedef struct _EXCEPTION
 {
@@ -30,9 +38,9 @@ typedef struct _EXCEPTION
 } EXCEPTION, *PEXCEPTION;
 
 uint32_t __microseh_HandlerStub(
-    _In_ PPROC_EXECUTOR ProcExecutor,
-    _In_ void* Proc,
-    _Inout_ PEXCEPTION Exception
+    PPROC_EXECUTOR ProcExecutor,
+    void* Proc,
+    PEXCEPTION Exception
 ) {
     uint32_t Result = MS_SUCCEEDED;
     uint32_t Code = 0;
